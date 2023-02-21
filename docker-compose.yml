@@ -7,16 +7,9 @@ services:
     item-app:
         # nama image yang digunakan yang berada di Github Packages
         image: ghcr.io/trisnanto/item-app:v1
-        # daftar perintah yang dijalankan setelah pembuatan container
-        command: sh -c "npm install --production --unsafe-perm && npm run build && npm run start"
         # mapping port untuk akses aplikasi melalui localhost
         ports:
             - 80:8080
-        # menetapkan working directory pada container
-        working_dir: /app
-        # bind mount current directory ke directory app didalam container
-        volumes:
-            - ./:/app
         # mengatur agar container selalu direstart apabila terhenti
         deploy:
             restart_policy:

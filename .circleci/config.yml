@@ -44,7 +44,6 @@ jobs:
       - checkout
       - docker/build:
         image: karsajobs
-        tag: latest
   build-app-karsa:
     working_directory: ~/app
     executor: docker/machine

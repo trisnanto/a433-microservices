@@ -16,7 +16,7 @@ jobs:
           dockerfile: Dockerfile
           treat-warnings-as-errors: true
   build:
-    working_directory: ~/repo
+    working_directory: ./
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -40,9 +40,6 @@ jobs:
           key: go-mod-v4-{{ checksum "go.sum" }}
           paths:
             - "/go/pkg/mod"
-      - run:
-          name: Start server
-          command: /build/web
       - run:
           name: Run tests
           command: |

@@ -43,7 +43,7 @@ jobs:
     steps:
       - checkout
       - docker/build:
-        image: ghcr.io/trisnanto/karsajobs:latest
+        image: trisnanto/karsajobs
   build-app-karsa:
     working_directory: ~/app
     executor: docker/machine

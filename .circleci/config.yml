@@ -2,18 +2,19 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+orbs:
+  docker: circleci/docker@2.2.0
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   lint:
-    working_directory: ~/repo
-    docker:
-      - image: hadolint/hadolint
+    executor: docker/machine
     steps:
       - checkout
-      - run:
-          name: lint-dockerfile
-          command: hadolint Dockerfile
+      - docker/dockerlint:
+          dockerfile: Dockerfile
+          treat-warnings-as-errors: true
   build:
     working_directory: ~/repo
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
@@ -28,7 +29,7 @@ jobs:
           name: list files
           command: |
             ls -ll
-            cwd
+            pwd
       - restore_cache:
           keys:
             - go-mod-v4-{{ checksum "go.sum" }}
@@ -50,7 +51,7 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  karsajobs: # This is the name of the workflow, feel free to change it to better match your workflow.
+  workflow: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - lint

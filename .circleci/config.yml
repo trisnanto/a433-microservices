@@ -42,9 +42,10 @@ jobs:
     executor: docker/machine
     steps:
       - checkout
-      - docker/build:
-          image: ghcr.io/trisnanto/karsajobs
+      - docker/publish:
+          image: trisnanto/karsajobs
           tag: latest
+          registry: ghcr.io
   build-app-karsa:
     working_directory: ~/app
     executor: docker/machine

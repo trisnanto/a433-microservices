@@ -43,7 +43,7 @@ jobs:
     steps:
       - checkout
       - docker/build:
-        image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          image: karsajobs
   build-app-karsa:
     working_directory: ~/app
     executor: docker/machine

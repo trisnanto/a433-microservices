@@ -43,7 +43,7 @@ jobs:
     steps:
       - checkout
       - docker/build:
-          image: trisnanto/karsajobs
+          image: ghcr.io/trisnanto/karsajobs
           tag: latest
       - docker/push:
           image: trisnanto/karsajobs

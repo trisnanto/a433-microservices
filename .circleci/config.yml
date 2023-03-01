@@ -41,6 +41,9 @@ jobs:
           paths:
             - "/go/pkg/mod"
       - run:
+          name: Start server
+          command: /build/web
+      - run:
           name: Run tests
           command: |
             mkdir -p /tmp/test-reports

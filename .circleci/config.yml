@@ -33,7 +33,11 @@ jobs:
             - "/go/pkg/mod"
       - run:
           name: Run tests
-          command: go test -v
+          command: |
+            mkdir -p /tmp/test-reports
+            gotestsum --junitfile /tmp/test-reports/unit-tests.xml
+      - store_test_results:
+          path: /tmp/test-reports
     
   build:
     working_directory: ~/app

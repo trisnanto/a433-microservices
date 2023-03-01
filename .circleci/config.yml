@@ -39,6 +39,11 @@ jobs:
       - store_test_results:
           path: /tmp/test-reports
   build-app-karsajobs:
+    steps:
+      -docker/build:
+        image: karsajobs
+        tag: latest
+  build-app-karsajobs2:
     working_directory: ~/app
     executor: docker/machine
     steps:
@@ -57,5 +62,5 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       #- lint-dockerfile
-      - test-app
-      #- build-app-karsajobs
+      #- test-app
+      - build-app-karsajobs

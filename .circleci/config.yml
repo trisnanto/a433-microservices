@@ -41,10 +41,11 @@ jobs:
   build-app-karsajobs:
     executor: docker/machine
     steps:
-      -docker/build:
+      - checkout
+      - docker/build:
         image: karsajobs
         tag: latest
-  build-app-karsajobs2:
+  build-app-karsa:
     working_directory: ~/app
     executor: docker/machine
     steps:

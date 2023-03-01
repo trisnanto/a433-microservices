@@ -42,7 +42,7 @@ jobs:
     executor: docker/docker
     steps:
       - checkout
-      - docker/publish:
+      - docker/push:
           image: trisnanto/karsajobs
           tag: latest
           registry: ghcr.io

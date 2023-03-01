@@ -16,8 +16,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: list files
+          command: ls -ll
+      - run:
           name: lint-dockerfile
-          command: docker run --rm -i hadolint/hadolint < Dockerfile
+          command: hadolint Dockerfile
       - restore_cache:
           keys:
             - go-mod-v4-{{ checksum "go.sum" }}

@@ -39,6 +39,7 @@ jobs:
       - store_test_results:
           path: /tmp/test-reports
   build-app-karsajobs:
+    executor: docker/docker
     steps:
       - checkout
       - docker/publish:

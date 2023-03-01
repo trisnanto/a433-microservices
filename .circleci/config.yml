@@ -24,7 +24,7 @@ jobs:
           tag: latest
       - run:
           name: Login to ghcr.io
-          command: echo $DOCKER_PASSWORD | docker login ghcr.io -u trisnanto --password-stdin
+          command: echo $GHCR_IO_PASSWORD | docker login ghcr.io -u trisnanto --password-stdin
       - docker/push:
           image: trisnanto/karsajobs-ui
           tag: latest

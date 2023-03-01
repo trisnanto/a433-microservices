@@ -45,6 +45,9 @@ jobs:
       - docker/build:
           image: ghcr.io/trisnanto/karsajobs
           tag: latest
+      - run:
+          name: Login to ghcr.io
+          command: echo $DOCKER_PASSWORD | docker login ghcr.io -u trisnanto --password-stdin
       - docker/push:
           image: trisnanto/karsajobs
           tag: latest

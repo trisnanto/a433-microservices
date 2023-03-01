@@ -42,6 +42,9 @@ jobs:
     executor: docker/machine
     steps:
       - checkout
+      - docker/build:
+          image: trisnanto/karsajobs
+          tag: latest
       - docker/push:
           image: trisnanto/karsajobs
           tag: latest
